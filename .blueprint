@@ -1,0 +1,210 @@
+created:
+    - app/Http/Controllers/RolController.php
+    - app/Http/Controllers/PermisoController.php
+    - app/Http/Controllers/ClienteController.php
+    - app/Http/Controllers/SubcontratistaController.php
+    - app/Http/Controllers/ProveedorController.php
+    - app/Http/Controllers/ArticuloController.php
+    - app/Http/Controllers/ServicioController.php
+    - app/Http/Controllers/PresupuestoController.php
+    - app/Http/Controllers/PresupuestoDetalleController.php
+    - app/Http/Controllers/OrdenServicioController.php
+    - app/Http/Controllers/OrdenServicioDetalleController.php
+    - app/Http/Controllers/FacturaClienteController.php
+    - app/Http/Controllers/PagoClienteController.php
+    - app/Http/Controllers/FacturaSubcontratistaController.php
+    - app/Http/Controllers/PagoSubcontratistaController.php
+    - app/Http/Controllers/EmpresaController.php
+    - app/Http/Controllers/ParametroController.php
+    - database/factories/RolFactory.php
+    - database/factories/PermisoFactory.php
+    - database/factories/ClienteFactory.php
+    - database/factories/SubcontratistaFactory.php
+    - database/factories/ProveedorFactory.php
+    - database/factories/ArticuloFactory.php
+    - database/factories/ServicioFactory.php
+    - database/factories/PresupuestoFactory.php
+    - database/factories/PresupuestoDetalleFactory.php
+    - database/factories/OrdenServicioFactory.php
+    - database/factories/OrdenServicioDetalleFactory.php
+    - database/factories/FacturaClienteFactory.php
+    - database/factories/PagoClienteFactory.php
+    - database/factories/FacturaSubcontratistaFactory.php
+    - database/factories/PagoSubcontratistaFactory.php
+    - database/factories/EmpresaFactory.php
+    - database/factories/ParametroFactory.php
+    - database/migrations/2026_02_01_062127_create_rols_table.php
+    - database/migrations/2026_02_01_062128_create_permisos_table.php
+    - database/migrations/2026_02_01_062129_create_clientes_table.php
+    - database/migrations/2026_02_01_062130_create_subcontratistas_table.php
+    - database/migrations/2026_02_01_062131_create_proveedors_table.php
+    - database/migrations/2026_02_01_062132_create_articulos_table.php
+    - database/migrations/2026_02_01_062133_create_servicios_table.php
+    - database/migrations/2026_02_01_062134_create_presupuestos_table.php
+    - database/migrations/2026_02_01_062135_create_presupuesto_detalles_table.php
+    - database/migrations/2026_02_01_062136_create_orden_servicios_table.php
+    - database/migrations/2026_02_01_062137_create_orden_servicio_detalles_table.php
+    - database/migrations/2026_02_01_062138_create_factura_clientes_table.php
+    - database/migrations/2026_02_01_062139_create_pago_clientes_table.php
+    - database/migrations/2026_02_01_062140_create_factura_subcontratistas_table.php
+    - database/migrations/2026_02_01_062141_create_pago_subcontratistas_table.php
+    - database/migrations/2026_02_01_062142_create_empresas_table.php
+    - database/migrations/2026_02_01_062143_create_parametros_table.php
+    - database/migrations/2026_02_01_062144_create_permiso_rol_table.php
+    - app/Models/Rol.php
+    - app/Models/Permiso.php
+    - app/Models/Cliente.php
+    - app/Models/Subcontratista.php
+    - app/Models/Proveedor.php
+    - app/Models/Articulo.php
+    - app/Models/Servicio.php
+    - app/Models/Presupuesto.php
+    - app/Models/PresupuestoDetalle.php
+    - app/Models/OrdenServicio.php
+    - app/Models/OrdenServicioDetalle.php
+    - app/Models/FacturaCliente.php
+    - app/Models/PagoCliente.php
+    - app/Models/FacturaSubcontratista.php
+    - app/Models/PagoSubcontratista.php
+    - app/Models/Empresa.php
+    - app/Models/Parametro.php
+    - tests/Feature/Http/Controllers/RolControllerTest.php
+    - tests/Feature/Http/Controllers/PermisoControllerTest.php
+    - tests/Feature/Http/Controllers/ClienteControllerTest.php
+    - tests/Feature/Http/Controllers/SubcontratistaControllerTest.php
+    - tests/Feature/Http/Controllers/ProveedorControllerTest.php
+    - tests/Feature/Http/Controllers/ArticuloControllerTest.php
+    - tests/Feature/Http/Controllers/ServicioControllerTest.php
+    - tests/Feature/Http/Controllers/PresupuestoControllerTest.php
+    - tests/Feature/Http/Controllers/PresupuestoDetalleControllerTest.php
+    - tests/Feature/Http/Controllers/OrdenServicioControllerTest.php
+    - tests/Feature/Http/Controllers/OrdenServicioDetalleControllerTest.php
+    - tests/Feature/Http/Controllers/FacturaClienteControllerTest.php
+    - tests/Feature/Http/Controllers/PagoClienteControllerTest.php
+    - tests/Feature/Http/Controllers/FacturaSubcontratistaControllerTest.php
+    - tests/Feature/Http/Controllers/PagoSubcontratistaControllerTest.php
+    - tests/Feature/Http/Controllers/EmpresaControllerTest.php
+    - tests/Feature/Http/Controllers/ParametroControllerTest.php
+    - app/Http/Requests/RolStoreRequest.php
+    - app/Http/Requests/RolUpdateRequest.php
+    - app/Http/Requests/PermisoStoreRequest.php
+    - app/Http/Requests/PermisoUpdateRequest.php
+    - app/Http/Requests/ClienteStoreRequest.php
+    - app/Http/Requests/ClienteUpdateRequest.php
+    - app/Http/Requests/SubcontratistumStoreRequest.php
+    - app/Http/Requests/SubcontratistumUpdateRequest.php
+    - app/Http/Requests/ProveedorStoreRequest.php
+    - app/Http/Requests/ProveedorUpdateRequest.php
+    - app/Http/Requests/ArticuloStoreRequest.php
+    - app/Http/Requests/ArticuloUpdateRequest.php
+    - app/Http/Requests/ServicioStoreRequest.php
+    - app/Http/Requests/ServicioUpdateRequest.php
+    - app/Http/Requests/PresupuestoStoreRequest.php
+    - app/Http/Requests/PresupuestoUpdateRequest.php
+    - app/Http/Requests/PresupuestoDetalleStoreRequest.php
+    - app/Http/Requests/PresupuestoDetalleUpdateRequest.php
+    - app/Http/Requests/OrdenServicioStoreRequest.php
+    - app/Http/Requests/OrdenServicioUpdateRequest.php
+    - app/Http/Requests/OrdenServicioDetalleStoreRequest.php
+    - app/Http/Requests/OrdenServicioDetalleUpdateRequest.php
+    - app/Http/Requests/FacturaClienteStoreRequest.php
+    - app/Http/Requests/FacturaClienteUpdateRequest.php
+    - app/Http/Requests/PagoClienteStoreRequest.php
+    - app/Http/Requests/PagoClienteUpdateRequest.php
+    - app/Http/Requests/FacturaSubcontratistumStoreRequest.php
+    - app/Http/Requests/FacturaSubcontratistumUpdateRequest.php
+    - app/Http/Requests/PagoSubcontratistumStoreRequest.php
+    - app/Http/Requests/PagoSubcontratistumUpdateRequest.php
+    - app/Http/Requests/EmpresaStoreRequest.php
+    - app/Http/Requests/EmpresaUpdateRequest.php
+    - app/Http/Requests/ParametroStoreRequest.php
+    - app/Http/Requests/ParametroUpdateRequest.php
+    - resources/views/rol/index.blade.php
+    - resources/views/rol/create.blade.php
+    - resources/views/rol/show.blade.php
+    - resources/views/rol/edit.blade.php
+    - resources/views/permiso/index.blade.php
+    - resources/views/permiso/create.blade.php
+    - resources/views/permiso/show.blade.php
+    - resources/views/permiso/edit.blade.php
+    - resources/views/cliente/index.blade.php
+    - resources/views/cliente/create.blade.php
+    - resources/views/cliente/show.blade.php
+    - resources/views/cliente/edit.blade.php
+    - resources/views/subcontratistum/index.blade.php
+    - resources/views/subcontratistum/create.blade.php
+    - resources/views/subcontratistum/show.blade.php
+    - resources/views/subcontratistum/edit.blade.php
+    - resources/views/proveedor/index.blade.php
+    - resources/views/proveedor/create.blade.php
+    - resources/views/proveedor/show.blade.php
+    - resources/views/proveedor/edit.blade.php
+    - resources/views/articulo/index.blade.php
+    - resources/views/articulo/create.blade.php
+    - resources/views/articulo/show.blade.php
+    - resources/views/articulo/edit.blade.php
+    - resources/views/servicio/index.blade.php
+    - resources/views/servicio/create.blade.php
+    - resources/views/servicio/show.blade.php
+    - resources/views/servicio/edit.blade.php
+    - resources/views/presupuesto/index.blade.php
+    - resources/views/presupuesto/create.blade.php
+    - resources/views/presupuesto/show.blade.php
+    - resources/views/presupuesto/edit.blade.php
+    - resources/views/presupuestoDetalle/index.blade.php
+    - resources/views/presupuestoDetalle/create.blade.php
+    - resources/views/presupuestoDetalle/show.blade.php
+    - resources/views/presupuestoDetalle/edit.blade.php
+    - resources/views/ordenServicio/index.blade.php
+    - resources/views/ordenServicio/create.blade.php
+    - resources/views/ordenServicio/show.blade.php
+    - resources/views/ordenServicio/edit.blade.php
+    - resources/views/ordenServicioDetalle/index.blade.php
+    - resources/views/ordenServicioDetalle/create.blade.php
+    - resources/views/ordenServicioDetalle/show.blade.php
+    - resources/views/ordenServicioDetalle/edit.blade.php
+    - resources/views/facturaCliente/index.blade.php
+    - resources/views/facturaCliente/create.blade.php
+    - resources/views/facturaCliente/show.blade.php
+    - resources/views/facturaCliente/edit.blade.php
+    - resources/views/pagoCliente/index.blade.php
+    - resources/views/pagoCliente/create.blade.php
+    - resources/views/pagoCliente/show.blade.php
+    - resources/views/pagoCliente/edit.blade.php
+    - resources/views/facturaSubcontratistum/index.blade.php
+    - resources/views/facturaSubcontratistum/create.blade.php
+    - resources/views/facturaSubcontratistum/show.blade.php
+    - resources/views/facturaSubcontratistum/edit.blade.php
+    - resources/views/pagoSubcontratistum/index.blade.php
+    - resources/views/pagoSubcontratistum/create.blade.php
+    - resources/views/pagoSubcontratistum/show.blade.php
+    - resources/views/pagoSubcontratistum/edit.blade.php
+    - resources/views/empresa/index.blade.php
+    - resources/views/empresa/create.blade.php
+    - resources/views/empresa/show.blade.php
+    - resources/views/empresa/edit.blade.php
+    - resources/views/parametro/index.blade.php
+    - resources/views/parametro/create.blade.php
+    - resources/views/parametro/show.blade.php
+    - resources/views/parametro/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string nullable', two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable', two_factor_confirmed_at: 'datetime nullable' }
+    Rol: { uuid: 'uuid unique index', nombre: 'string:100 unique', descripcion: 'text nullable', timestamps: timestamps, relationships: { hasMany: User, belongsToMany: Permiso } }
+    Permiso: { uuid: 'uuid unique index', modulo: 'string:100', accion: 'string:50', descripcion: 'string:255 nullable', timestamps: timestamps, relationships: { belongsToMany: Rol } }
+    Cliente: { uuid: 'uuid unique index', tipo_documento: 'enum:RUC,DNI default:RUC', numero_documento: 'string:20 unique', razon_social: 'string:255', direccion: 'string:255 nullable', distrito: 'string:100 nullable', provincia: 'string:100 nullable', departamento: 'string:100 nullable', persona_contacto: 'string:150 nullable', cargo_contacto: 'string:100 nullable', telefono: 'string:20 nullable', email: 'string:150 nullable', estado: 'enum:activo,inactivo default:activo', observaciones: 'text nullable', usuario_creacion_id: 'id foreign:users', usuario_modificacion_id: 'id foreign:users nullable', timestamps: timestamps, softdeletes: softDeletes, relationships: { hasMany: 'Presupuesto, FacturaCliente', belongsTo: User } }
+    Subcontratista: { uuid: 'uuid unique index', tipo: 'enum:empresa,persona_natural default:empresa', tipo_documento: 'enum:RUC,DNI default:RUC', numero_documento: 'string:20 unique', razon_social_nombre: 'string:255', direccion: 'string:255 nullable', telefono: 'string:20 nullable', email: 'string:150 nullable', banco: 'string:100 nullable', numero_cuenta: 'string:50 nullable', cci: 'string:50 nullable', numero_cuenta_detraccion: 'string:50 nullable', estado: 'enum:activo,inactivo default:activo', usuario_creacion_id: 'id foreign:users', usuario_modificacion_id: 'id foreign:users nullable', timestamps: timestamps, softdeletes: softDeletes, relationships: { hasMany: 'OrdenServicio, FacturaSubcontratista', belongsTo: User } }
+    Proveedor: { uuid: 'uuid unique index', tipo_documento: 'enum:RUC default:RUC', numero_documento: 'string:20 unique', razon_social: 'string:255', rubro: 'string:150 nullable', contacto: 'string:150 nullable', telefono: 'string:20 nullable', email: 'string:150 nullable', estado: 'enum:activo,inactivo default:activo', usuario_creacion_id: 'id foreign:users', usuario_modificacion_id: 'id foreign:users nullable', timestamps: timestamps, softdeletes: softDeletes, relationships: { hasMany: Articulo, belongsTo: User } }
+    Articulo: { uuid: 'uuid unique index', codigo: 'string:50 unique', descripcion: 'string:255', unidad_medida: 'string:20', proveedor_id: 'id foreign:proveedores', precio_compra: 'decimal:10,2', precio_venta: 'decimal:10,2', stock: 'decimal:10,2 default:0', fecha_vencimiento: 'date nullable', estado: 'enum:activo,inactivo default:activo', usuario_creacion_id: 'id foreign:users', usuario_modificacion_id: 'id foreign:users nullable', timestamps: timestamps, softdeletes: softDeletes, relationships: { belongsTo: 'Proveedor, User' } }
+    Servicio: { uuid: 'uuid unique index', codigo: 'string:50 unique', descripcion: 'string:255', unidad_medida: 'string:20', precio_referencial: 'decimal:10,2', estado: 'enum:activo,inactivo default:activo', usuario_creacion_id: 'id foreign:users', usuario_modificacion_id: 'id foreign:users nullable', timestamps: timestamps, softdeletes: softDeletes, relationships: { hasMany: PresupuestoDetalle, belongsTo: User } }
+    Presupuesto: { uuid: 'uuid unique index', numero_presupuesto: 'string:50 unique', fecha_emision: date, fecha_vencimiento: date, cliente_id: 'id foreign:clientes', persona_contacto: 'string:150 nullable', supervisor_id: 'id foreign:users', estado: 'enum:en_revision,aprobado,rechazado,vencido,en_ejecucion,finalizado default:en_revision', fecha_aceptacion: 'date nullable', fecha_inicio: 'date nullable', fecha_finalizacion_estimada: 'date nullable', periodo_ejecucion_dias: 'integer nullable', base_imponible: 'decimal:12,2', igv: 'decimal:12,2', descuento_porcentaje: 'decimal:5,2 nullable', descuento_monto: 'decimal:12,2 nullable', total: 'decimal:12,2', observaciones: 'text nullable', usuario_creacion_id: 'id foreign:users', usuario_modificacion_id: 'id foreign:users nullable', timestamps: timestamps, softdeletes: softDeletes, relationships: { belongsTo: 'Cliente, User', hasMany: 'PresupuestoDetalle, OrdenServicio', hasOne: FacturaCliente } }
+    PresupuestoDetalle: { uuid: 'uuid unique index', presupuesto_id: 'id foreign:presupuestos onDelete:cascade', servicio_id: 'id foreign:servicios nullable', descripcion: 'string:255', cantidad: 'decimal:10,2', unidad_medida: 'string:20', precio_unitario: 'decimal:10,2', subtotal: 'decimal:12,2', orden: 'integer default:1', timestamps: timestamps, relationships: { belongsTo: 'Presupuesto, Servicio' } }
+    OrdenServicio: { uuid: 'uuid unique index', numero_orden: 'string:50 unique', fecha_emision: date, presupuesto_id: 'id foreign:presupuestos', subcontratista_id: 'id foreign:subcontratistas', tipo_contrato: 'enum:servicio_completo,solo_mano_obra default:servicio_completo', estado: 'enum:pendiente,aprobado,en_ejecucion,finalizado,pagado default:pendiente', fecha_aprobacion: 'date nullable', fecha_inicio_ejecucion: 'date nullable', fecha_finalizacion: 'date nullable', base_imponible: 'decimal:12,2', igv: 'decimal:12,2', total: 'decimal:12,2', porcentaje_detraccion: 'decimal:5,2 nullable', monto_detraccion: 'decimal:12,2 nullable', tipo_documento: 'enum:factura,recibo_honorarios,boleta default:factura', observaciones: 'text nullable', usuario_creacion_id: 'id foreign:users', usuario_modificacion_id: 'id foreign:users nullable', timestamps: timestamps, softdeletes: softDeletes, relationships: { belongsTo: 'Presupuesto, Subcontratista, User', hasMany: OrdenServicioDetalle, hasOne: FacturaSubcontratista } }
+    OrdenServicioDetalle: { uuid: 'uuid unique index', orden_servicio_id: 'id foreign:ordenes_servicio onDelete:cascade', descripcion: 'string:255', cantidad: 'decimal:10,2', unidad_medida: 'string:20', precio_unitario: 'decimal:10,2', subtotal: 'decimal:12,2', timestamps: timestamps, relationships: { belongsTo: OrdenServicio } }
+    FacturaCliente: { uuid: 'uuid unique index', numero_factura: 'string:50', serie: 'string:20', fecha_emision: date, fecha_vencimiento: date, cliente_id: 'id foreign:clientes', presupuesto_id: 'id foreign:presupuestos', base_imponible: 'decimal:12,2', igv: 'decimal:12,2', descuento_porcentaje: 'decimal:5,2 nullable', descuento_descripcion: 'string:255 nullable', descuento_monto: 'decimal:12,2 nullable', total: 'decimal:12,2', porcentaje_detraccion: 'decimal:5,2 nullable', monto_detraccion: 'decimal:12,2 nullable', estado: 'enum:pendiente,pago_parcial,pagado_completo default:pendiente', monto_pagado: 'decimal:12,2 default:0', monto_pendiente: 'decimal:12,2', observaciones: 'text nullable', usuario_creacion_id: 'id foreign:users', usuario_modificacion_id: 'id foreign:users nullable', timestamps: timestamps, softdeletes: softDeletes, relationships: { belongsTo: 'Cliente, Presupuesto, User', hasMany: PagoCliente } }
+    PagoCliente: { uuid: 'uuid unique index', factura_cliente_id: 'id foreign:facturas_clientes onDelete:cascade', numero_pago: 'string:50', fecha_pago: date, monto: 'decimal:12,2', metodo_pago: 'enum:efectivo,transferencia,cheque,deposito default:transferencia', banco: 'string:100 nullable', numero_operacion: 'string:100 nullable', comprobante: 'string:255 nullable', observaciones: 'text nullable', usuario_registro_id: 'id foreign:users', timestamps: timestamps, relationships: { belongsTo: 'FacturaCliente, User' } }
+    FacturaSubcontratista: { uuid: 'uuid unique index', tipo_documento: 'enum:factura,recibo_honorarios,boleta default:factura', numero_documento: 'string:50', serie: 'string:20 nullable', fecha_emision: date, fecha_vencimiento: date, subcontratista_id: 'id foreign:subcontratistas', orden_servicio_id: 'id foreign:ordenes_servicio', base_imponible: 'decimal:12,2', igv: 'decimal:12,2', total: 'decimal:12,2', porcentaje_detraccion: 'decimal:5,2 nullable', monto_detraccion: 'decimal:12,2 nullable', estado: 'enum:pendiente,pago_parcial,pagado_completo default:pendiente', monto_pagado: 'decimal:12,2 default:0', monto_pendiente: 'decimal:12,2', observaciones: 'text nullable', usuario_creacion_id: 'id foreign:users', usuario_modificacion_id: 'id foreign:users nullable', timestamps: timestamps, softdeletes: softDeletes, relationships: { belongsTo: 'Subcontratista, OrdenServicio, User', hasMany: PagoSubcontratista } }
+    PagoSubcontratista: { uuid: 'uuid unique index', factura_subcontratista_id: 'id foreign:facturas_subcontratistas onDelete:cascade', numero_pago: 'string:50', fecha_pago: date, monto: 'decimal:12,2', metodo_pago: 'enum:efectivo,transferencia,cheque,deposito default:transferencia', banco: 'string:100 nullable', numero_operacion: 'string:100 nullable', cuenta_detraccion_usada: 'boolean default:false', comprobante: 'string:255 nullable', observaciones: 'text nullable', usuario_registro_id: 'id foreign:users', timestamps: timestamps, relationships: { belongsTo: 'FacturaSubcontratista, User' } }
+    Empresa: { uuid: 'uuid unique index', ruc: 'string:20 unique', razon_social: 'string:255', nombre_comercial: 'string:255 nullable', direccion: 'string:255 nullable', telefono: 'string:20 nullable', email: 'string:150 nullable', logo: 'string:255 nullable', timestamps: timestamps }
+    Parametro: { uuid: 'uuid unique index', clave: 'string:100 unique', valor: text, descripcion: 'string:255 nullable', tipo_dato: 'enum:decimal,string,integer,boolean default:string', timestamps: timestamps }

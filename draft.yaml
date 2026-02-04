@@ -1,0 +1,398 @@
+models:
+  # ============================================
+  # MÓDULO: SEGURIDAD Y USUARIOS
+  # ============================================
+  # NOTA: User ya existe en Laravel, solo agregamos relaciones
+  
+  Rol:
+    uuid: uuid unique index
+    nombre: string:100 unique
+    descripcion: text nullable
+    timestamps: timestamps
+    relationships:
+      hasMany: User
+      belongsToMany: Permiso
+
+  Permiso:
+    uuid: uuid unique index
+    modulo: string:100
+    accion: string:50
+    descripcion: string:255 nullable
+    timestamps: timestamps
+    relationships:
+      belongsToMany: Rol
+
+  # ============================================
+  # MÓDULO: CLIENTES
+  # ============================================
+  
+  Cliente:
+    uuid: uuid unique index
+    tipo_documento: enum:RUC,DNI default:RUC
+    numero_documento: string:20 unique
+    razon_social: string:255
+    direccion: string:255 nullable
+    distrito: string:100 nullable
+    provincia: string:100 nullable
+    departamento: string:100 nullable
+    persona_contacto: string:150 nullable
+    cargo_contacto: string:100 nullable
+    telefono: string:20 nullable
+    email: string:150 nullable
+    estado: enum:activo,inactivo default:activo
+    observaciones: text nullable
+    usuario_creacion_id: id foreign:users
+    usuario_modificacion_id: id foreign:users nullable
+    timestamps: timestamps
+    softdeletes: softDeletes
+    relationships:
+      hasMany: Presupuesto, FacturaCliente
+      belongsTo: User
+
+  # ============================================
+  # MÓDULO: SUBCONTRATISTAS
+  # ============================================
+  
+  Subcontratista:
+    uuid: uuid unique index
+    tipo: enum:empresa,persona_natural default:empresa
+    tipo_documento: enum:RUC,DNI default:RUC
+    numero_documento: string:20 unique
+    razon_social_nombre: string:255
+    direccion: string:255 nullable
+    telefono: string:20 nullable
+    email: string:150 nullable
+    banco: string:100 nullable
+    numero_cuenta: string:50 nullable
+    cci: string:50 nullable
+    numero_cuenta_detraccion: string:50 nullable
+    estado: enum:activo,inactivo default:activo
+    usuario_creacion_id: id foreign:users
+    usuario_modificacion_id: id foreign:users nullable
+    timestamps: timestamps
+    softdeletes: softDeletes
+    relationships:
+      hasMany: OrdenServicio, FacturaSubcontratista
+      belongsTo: User
+
+  # ============================================
+  # MÓDULO: PROVEEDORES Y ARTÍCULOS
+  # ============================================
+  
+  Proveedor:
+    uuid: uuid unique index
+    tipo_documento: enum:RUC default:RUC
+    numero_documento: string:20 unique
+    razon_social: string:255
+    rubro: string:150 nullable
+    contacto: string:150 nullable
+    telefono: string:20 nullable
+    email: string:150 nullable
+    estado: enum:activo,inactivo default:activo
+    usuario_creacion_id: id foreign:users
+    usuario_modificacion_id: id foreign:users nullable
+    timestamps: timestamps
+    softdeletes: softDeletes
+    relationships:
+      hasMany: Articulo
+      belongsTo: User
+
+  Articulo:
+    uuid: uuid unique index
+    codigo: string:50 unique
+    descripcion: string:255
+    unidad_medida: string:20
+    proveedor_id: id foreign:proveedores
+    precio_compra: decimal:10,2
+    precio_venta: decimal:10,2
+    stock: decimal:10,2 default:0
+    fecha_vencimiento: date nullable
+    estado: enum:activo,inactivo default:activo
+    usuario_creacion_id: id foreign:users
+    usuario_modificacion_id: id foreign:users nullable
+    timestamps: timestamps
+    softdeletes: softDeletes
+    relationships:
+      belongsTo: Proveedor, User
+
+  # ============================================
+  # MÓDULO: SERVICIOS
+  # ============================================
+  
+  Servicio:
+    uuid: uuid unique index
+    codigo: string:50 unique
+    descripcion: string:255
+    unidad_medida: string:20
+    precio_referencial: decimal:10,2
+    estado: enum:activo,inactivo default:activo
+    usuario_creacion_id: id foreign:users
+    usuario_modificacion_id: id foreign:users nullable
+    timestamps: timestamps
+    softdeletes: softDeletes
+    relationships:
+      hasMany: PresupuestoDetalle
+      belongsTo: User
+
+  # ============================================
+  # MÓDULO: PRESUPUESTOS
+  # ============================================
+  
+  Presupuesto:
+    uuid: uuid unique index
+    numero_presupuesto: string:50 unique
+    fecha_emision: date
+    fecha_vencimiento: date
+    cliente_id: id foreign:clientes
+    persona_contacto: string:150 nullable
+    supervisor_id: id foreign:users
+    estado: enum:en_revision,aprobado,rechazado,vencido,en_ejecucion,finalizado default:en_revision
+    fecha_aceptacion: date nullable
+    fecha_inicio: date nullable
+    fecha_finalizacion_estimada: date nullable
+    periodo_ejecucion_dias: integer nullable
+    base_imponible: decimal:12,2
+    igv: decimal:12,2
+    descuento_porcentaje: decimal:5,2 nullable
+    descuento_monto: decimal:12,2 nullable
+    total: decimal:12,2
+    observaciones: text nullable
+    usuario_creacion_id: id foreign:users
+    usuario_modificacion_id: id foreign:users nullable
+    timestamps: timestamps
+    softdeletes: softDeletes
+    relationships:
+      belongsTo: Cliente, User
+      hasMany: PresupuestoDetalle, OrdenServicio
+      hasOne: FacturaCliente
+
+  PresupuestoDetalle:
+    uuid: uuid unique index
+    presupuesto_id: id foreign:presupuestos onDelete:cascade
+    servicio_id: id foreign:servicios nullable
+    descripcion: string:255
+    cantidad: decimal:10,2
+    unidad_medida: string:20
+    precio_unitario: decimal:10,2
+    subtotal: decimal:12,2
+    orden: integer default:1
+    timestamps: timestamps
+    relationships:
+      belongsTo: Presupuesto, Servicio
+
+  # ============================================
+  # MÓDULO: ÓRDENES DE SERVICIO
+  # ============================================
+  
+  OrdenServicio:
+    uuid: uuid unique index
+    numero_orden: string:50 unique
+    fecha_emision: date
+    presupuesto_id: id foreign:presupuestos
+    subcontratista_id: id foreign:subcontratistas
+    tipo_contrato: enum:servicio_completo,solo_mano_obra default:servicio_completo
+    estado: enum:pendiente,aprobado,en_ejecucion,finalizado,pagado default:pendiente
+    fecha_aprobacion: date nullable
+    fecha_inicio_ejecucion: date nullable
+    fecha_finalizacion: date nullable
+    base_imponible: decimal:12,2
+    igv: decimal:12,2
+    total: decimal:12,2
+    porcentaje_detraccion: decimal:5,2 nullable
+    monto_detraccion: decimal:12,2 nullable
+    tipo_documento: enum:factura,recibo_honorarios,boleta default:factura
+    observaciones: text nullable
+    usuario_creacion_id: id foreign:users
+    usuario_modificacion_id: id foreign:users nullable
+    timestamps: timestamps
+    softdeletes: softDeletes
+    relationships:
+      belongsTo: Presupuesto, Subcontratista, User
+      hasMany: OrdenServicioDetalle
+      hasOne: FacturaSubcontratista
+
+  OrdenServicioDetalle:
+    uuid: uuid unique index
+    orden_servicio_id: id foreign:ordenes_servicio onDelete:cascade
+    descripcion: string:255
+    cantidad: decimal:10,2
+    unidad_medida: string:20
+    precio_unitario: decimal:10,2
+    subtotal: decimal:12,2
+    timestamps: timestamps
+    relationships:
+      belongsTo: OrdenServicio
+
+  # ============================================
+  # MÓDULO: CUENTAS POR COBRAR
+  # ============================================
+  
+  FacturaCliente:
+    uuid: uuid unique index
+    numero_factura: string:50
+    serie: string:20
+    fecha_emision: date
+    fecha_vencimiento: date
+    cliente_id: id foreign:clientes
+    presupuesto_id: id foreign:presupuestos
+    base_imponible: decimal:12,2
+    igv: decimal:12,2
+    descuento_porcentaje: decimal:5,2 nullable
+    descuento_descripcion: string:255 nullable
+    descuento_monto: decimal:12,2 nullable
+    total: decimal:12,2
+    porcentaje_detraccion: decimal:5,2 nullable
+    monto_detraccion: decimal:12,2 nullable
+    estado: enum:pendiente,pago_parcial,pagado_completo default:pendiente
+    monto_pagado: decimal:12,2 default:0
+    monto_pendiente: decimal:12,2
+    observaciones: text nullable
+    usuario_creacion_id: id foreign:users
+    usuario_modificacion_id: id foreign:users nullable
+    timestamps: timestamps
+    softdeletes: softDeletes
+    relationships:
+      belongsTo: Cliente, Presupuesto, User
+      hasMany: PagoCliente
+
+  PagoCliente:
+    uuid: uuid unique index
+    factura_cliente_id: id foreign:facturas_clientes onDelete:cascade
+    numero_pago: string:50
+    fecha_pago: date
+    monto: decimal:12,2
+    metodo_pago: enum:efectivo,transferencia,cheque,deposito default:transferencia
+    banco: string:100 nullable
+    numero_operacion: string:100 nullable
+    comprobante: string:255 nullable
+    observaciones: text nullable
+    usuario_registro_id: id foreign:users
+    timestamps: timestamps
+    relationships:
+      belongsTo: FacturaCliente, User
+
+  # ============================================
+  # MÓDULO: CUENTAS POR PAGAR
+  # ============================================
+  
+  FacturaSubcontratista:
+    uuid: uuid unique index
+    tipo_documento: enum:factura,recibo_honorarios,boleta default:factura
+    numero_documento: string:50
+    serie: string:20 nullable
+    fecha_emision: date
+    fecha_vencimiento: date
+    subcontratista_id: id foreign:subcontratistas
+    orden_servicio_id: id foreign:ordenes_servicio
+    base_imponible: decimal:12,2
+    igv: decimal:12,2
+    total: decimal:12,2
+    porcentaje_detraccion: decimal:5,2 nullable
+    monto_detraccion: decimal:12,2 nullable
+    estado: enum:pendiente,pago_parcial,pagado_completo default:pendiente
+    monto_pagado: decimal:12,2 default:0
+    monto_pendiente: decimal:12,2
+    observaciones: text nullable
+    usuario_creacion_id: id foreign:users
+    usuario_modificacion_id: id foreign:users nullable
+    timestamps: timestamps
+    softdeletes: softDeletes
+    relationships:
+      belongsTo: Subcontratista, OrdenServicio, User
+      hasMany: PagoSubcontratista
+
+  PagoSubcontratista:
+    uuid: uuid unique index
+    factura_subcontratista_id: id foreign:facturas_subcontratistas onDelete:cascade
+    numero_pago: string:50
+    fecha_pago: date
+    monto: decimal:12,2
+    metodo_pago: enum:efectivo,transferencia,cheque,deposito default:transferencia
+    banco: string:100 nullable
+    numero_operacion: string:100 nullable
+    cuenta_detraccion_usada: boolean default:false
+    comprobante: string:255 nullable
+    observaciones: text nullable
+    usuario_registro_id: id foreign:users
+    timestamps: timestamps
+    relationships:
+      belongsTo: FacturaSubcontratista, User
+
+  # ============================================
+  # MÓDULO: CONFIGURACIÓN
+  # ============================================
+  
+  Empresa:
+    uuid: uuid unique index
+    ruc: string:20 unique
+    razon_social: string:255
+    nombre_comercial: string:255 nullable
+    direccion: string:255 nullable
+    telefono: string:20 nullable
+    email: string:150 nullable
+    logo: string:255 nullable
+    timestamps: timestamps
+
+  Parametro:
+    uuid: uuid unique index
+    clave: string:100 unique
+    valor: text
+    descripcion: string:255 nullable
+    tipo_dato: enum:decimal,string,integer,boolean default:string
+    timestamps: timestamps
+
+controllers:
+  # ============================================
+  # CONTROLADORES WEB (INERTIA.JS)
+  # ============================================
+  
+  Rol:
+    resource: web
+    
+  Permiso:
+    resource: web
+    
+  Cliente:
+    resource: web
+    
+  Subcontratista:
+    resource: web
+    
+  Proveedor:
+    resource: web
+    
+  Articulo:
+    resource: web
+    
+  Servicio:
+    resource: web
+    
+  Presupuesto:
+    resource: web
+    
+  PresupuestoDetalle:
+    resource: web
+    
+  OrdenServicio:
+    resource: web
+    
+  OrdenServicioDetalle:
+    resource: web
+    
+  FacturaCliente:
+    resource: web
+    
+  PagoCliente:
+    resource: web
+    
+  FacturaSubcontratista:
+    resource: web
+    
+  PagoSubcontratista:
+    resource: web
+    
+  Empresa:
+    resource: web
+    
+  Parametro:
+    resource: web

@@ -1,0 +1,241 @@
+
+Hola soy un empresario que quiere tener un sistema y esto es la descripcion de mi negocio:
+
+Yo ofresco servicios a mis clientes y como resultado final le genero un presupuesto de cuanto le voy a cobrar por dicho servicio, internamente lo gestionare de esta formas y tomemos ejemplo de un servicio de pintar todo un edificio: 
+
+1. Primero saco el costo de los materiales a usar, mano de obra y mi ganancia como empresario, y al final le genero un presupuesto a mi cliente, pero solo dandole el monto total de dicho servicio, es decir, le genero un presupuesto general sin detalle alguno.
+
+Si el Ciente acepta el presupuesto generado, se le genera una factura de pago, puede ser en partes o en un solo pago, si es en partes se le genera un recibo de pago y se le pide que pague la cantidad correspondiente como pago inicial, y el resto se le pide que pague en partes iguales o en un solo pago. 
+
+Ahora yo como empresario tengo que gestionar de 2 formas: 
+1. Genero mi Orden de servicio y asocio la factura del cliente y contrato a una empresa o persona que me vaya a realizar el servicio.
+2. Genero mi Orden de servicio y asocio la factura del cliente y contrato a una empresa o persona que me vaya a realizar solo la mano de obra porque los materiales los voy a comprar yo.
+
+Importante 1: Puede ser que un cliente X pueda tener 2 o mas servicios en un solo presupuesto, entonces yo contrataria a una empresa o varias por cada servicio o a una o  varias personas como mano de obra para cada servicio. 
+
+Importante 2: Recuerda que si se contrata a empresas para que realicen dicho servicio, ellos suplicaran todo los materiales que se requiera para realizar dicho servicio.
+
+Importante 3: Recuerda que si es contrata solo mano de obra a una empresa o persona individual, ellos suplicaran solo la mano de obra y los materiales los voy a comprar yo.
+
+Importante 4: Recuerda que como empresa formal pedira factura de todos los servicios que realice, si es persona individual solo pedira recibo por honorarios, hasta incluso para las empresas solo boletas, que aya esas opciones.
+
+Importante 5: Recuerda que al generar el presupuesto general, por defecto tendra un estado de "En revision" y una vez que el cliente acepte el presupuesto, se cambiara a "Aprobado" Cuando es aprobado, recien se podra generar la factura de pago y el recibo de pago. Cuando dio su primer pago compelto o parcial, se cambiara el estado a en ejecucion el presupuesto y en la factura se cambiara el estado a pagada en caso sera un solo pago y si es parcial un detalle de pagos. Cuando se culmino el servicio se cambiara el estado a finalizado el presupuesto y la factura su estado pago completado en la factura general y en el detalle todo diran pagado.
+
+Importante 6: Para la tabla de articulo que sea simple, proveedor, precio_compra, precio_venta, stock, fecha_vencimiento, estado (activo/inactivo), fecha creacion, fecha modificacion, usuario creacion, usuario modificacion.
+
+
+
+
+POSIBLES MODULOS QUE YO MANUALMENTE ENTENDI Y LO SAQUE, PERO LOS CAMPOS  SI SON RELEVANTES A CONSIDERAR, PERO SE PUEDEN MEJORARA, AÑADIR MAS:
+
+CONTEXTO DEL NEGOCIO:
+
+Sistema de gestión para empresa contratista que:
+
+
+
+MÓDULOS DEL SISTEMA:
+
+LOGIN Y SEGURIDAD
+Pantalla de login (usuario, contraseña)
+
+Recuperación de contraseña
+
+Cierre de sesión
+
+DASHBOARD / INICIO
+Resumen de presupuestos pendientes, aprobados, rechazados
+
+Órdenes de servicio activas
+
+Facturas pendientes de cobro
+
+Facturas pendientes de pago a subcontratistas
+
+Indicadores: ingresos del mes, egresos del mes, utilidad
+
+GESTIONAR USUARIOS
+Crear, editar, listar, eliminar usuarios
+
+Campos: nombre completo, usuario, email, rol, estado (activo/inactivo), fecha creación
+
+GESTIONAR ROLES Y PERMISOS
+Crear, editar, listar roles
+
+Asignar permisos por módulo
+
+Campos: nombre rol, descripción, permisos (matriz de módulos vs acciones)
+
+GESTIONAR CLIENTES
+Crear, editar, listar, ver detalle
+
+Campos:
+
+Razón social, RUC, dirección, distrito, provincia, departamento
+
+Persona de contacto, cargo, teléfono, correo
+
+Estado (activo/inactivo), fecha registro
+
+Observaciones
+
+GESTIONAR SUBCONTRATISTAS (antes "Contratistas")
+Crear, editar, listar, ver detalle
+
+Campos:
+
+Razón social / Nombre completo (persona natural), RUC/DNI
+
+Dirección, teléfono, correo
+
+Tipo (empresa/persona natural)
+
+Banco, número de cuenta, CCI
+
+Número de cuenta de detracción
+
+Estado (activo/inactivo), fecha registro
+
+GESTIONAR PROVEEDORES (materiales/insumos)
+Crear, editar, listar
+
+Campos: razón social, RUC, rubro, contacto, teléfono, correo, estado
+
+GESTIONAR SERVICIOS/PRODUCTOS
+Catálogo de servicios que ofrece la empresa
+
+Campos: código, descripción, unidad medida, precio referencial, estado
+
+GESTIONAR PRESUPUESTOS
+Crear, editar, listar, ver detalle, imprimir PDF
+
+Cabecera:
+
+Nro presupuesto (auto), fecha emisión, fecha vencimiento
+
+Cliente (lookup), persona contacto, supervisor asignado
+
+Estado (borrador, enviado, aprobado, rechazado, vencido)
+
+Fecha aceptación, fecha inicio, fecha finalización estimada
+
+Periodo de ejecución (días)
+
+Observaciones
+
+Detalle (líneas):
+
+Servicio/descripción, cantidad, unidad, precio unitario
+
+Subtotal por línea
+
+Totales:
+
+Base imponible, IGV (18%), total
+
+Descuento (%, monto), total final
+
+GESTIONAR ÓRDENES DE SERVICIO (OS)
+Crear desde presupuesto aprobado, editar, listar, ver detalle
+
+Cabecera:
+
+Nro OS (auto), fecha emisión
+
+Presupuesto origen (nro_ppt - lookup)
+
+Subcontratista (lookup)
+
+Estado (pendiente, en proceso, ejecutado, entregado, pagado)
+
+Fecha ejecución, fecha entrega
+
+Observaciones
+
+Detalle:
+
+Descripción del servicio/trabajo
+
+Cantidad, unidad, precio unitario
+
+Base imponible, IGV, total
+
+Porcentaje detracción (%), monto detracción
+
+Tipo documento (factura, recibo por honorarios)
+
+GESTIONAR FACTURAS DE CLIENTES (Cuentas por Cobrar)
+Registrar facturas emitidas a clientes
+
+Cabecera:
+
+Nro factura, serie, fecha emisión, fecha vencimiento
+
+Cliente (lookup), presupuesto asociado
+
+Base imponible, IGV, total factura
+
+Porcentaje detracción, monto detracción
+
+Descuento (%, descripción, monto)
+
+Estado (pendiente, parcial, cancelado)
+
+Monto pagado, monto pendiente
+
+Registro de Pagos:
+
+Fecha pago, monto, método pago (efectivo, transferencia, cheque)
+
+Banco, nro operación, comprobante
+
+Observaciones
+
+GESTIONAR FACTURAS/RECIBOS DE SUBCONTRATISTAS (Cuentas por Pagar)
+Registrar documentos recibidos de subcontratistas
+
+Cabecera:
+
+Tipo documento (factura, recibo por honorarios)
+
+Nro documento, serie, fecha emisión, fecha vencimiento
+
+Subcontratista (lookup), OS asociada
+
+Base imponible, IGV, total
+
+Porcentaje detracción, monto detracción
+
+Estado (pendiente, parcial, cancelado)
+
+Monto pagado, monto pendiente
+
+Registro de Pagos:
+
+Fecha pago, monto, método pago
+
+Banco, nro operación, comprobante
+
+Cuenta detracción (si aplica)
+
+Observaciones
+
+REPORTES
+Reporte de presupuestos por estado/periodo
+
+Reporte de órdenes de servicio
+
+Reporte de cuentas por cobrar (antigüedad, estado)
+
+Reporte de cuentas por pagar (antigüedad, estado)
+
+Flujo de caja (ingresos vs egresos)
+
+Rentabilidad por proyecto/presupuesto
+
+CONFIGURACIÓN
+Datos de la empresa
+
+Parámetros del sistema (IGV, series de documentos)
+
+Respaldo y restauración.
